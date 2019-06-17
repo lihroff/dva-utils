@@ -1,0 +1,37 @@
+{
+  "name": "dvau",
+  "version": "0.0.1",
+  "description": "Utility functions and common patterns for Dvajs",
+  "main": "index.js",
+  "scripts": {
+    "prettier": "prettier --write --print-width 100 --jsx-single-quote --trailing-comma all \"**/*.js\" \"**/*.jsx\" \"**/*.tsx\" \"**/*.ts\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tommy-White/Dva-utils.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tommy-White/Dva-utils/issues"
+  },
+  "homepage": "https://github.com/Tommy-White/Dva-utils#readme",
+  "devDependencies": {
+    "husky": "^2.4.1",
+    "lint-staged": "^8.2.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
