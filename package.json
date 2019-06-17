@@ -1,6 +1,6 @@
 {
   "name": "dvau",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Utility functions and common patterns for Dvajs",
   "main": "dist/index.js",
   "module": "dva-utils.module.js",
