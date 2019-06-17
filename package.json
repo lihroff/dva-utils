@@ -2,8 +2,12 @@
   "name": "dvau",
   "version": "0.0.1",
   "description": "Utility functions and common patterns for Dvajs",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dva-utils.module.js",
+  "browser": "dva-utils.module.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
+    "build": "tsc -p src | tsc -p src --module commonjs --outDir dist && rollup lib/index.js -o dva-utils.umd.js -f umd --name dvaUtils && rollup lib/index.js  -o dva-utils.module.js -f esm",
     "prettier": "prettier --write --print-width 100 --jsx-single-quote --trailing-comma all \"**/*.js\" \"**/*.jsx\" \"**/*.tsx\" \"**/*.ts\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,9 +22,15 @@
   },
   "homepage": "https://github.com/Tommy-White/Dva-utils#readme",
   "devDependencies": {
+    "@types/node": "^12.0.8",
     "husky": "^2.4.1",
     "lint-staged": "^8.2.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "rollup": "^1.15.6"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "dva": "^2.1.0"
   },
   "husky": {
     "hooks": {

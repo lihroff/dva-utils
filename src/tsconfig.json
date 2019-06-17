@@ -1,0 +1,14 @@
+{
+  "version": "3.5.2",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "removeComments": false,
+    "declaration": true,
+    "outDir": "../lib/",
+    "downlevelIteration": true,
+    "lib": ["es2015", "es2016"]
+  },
+  "include": ["**/*.ts", "**/*.js"],
+  "exclude": ["node_modules"]
+}

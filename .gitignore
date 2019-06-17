@@ -1,2 +1,6 @@
-node_modules
+/node_modules
 *.log
+/lib
+dist
+dva-utils.module.js
+dva-utils.umd.js
