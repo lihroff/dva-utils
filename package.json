@@ -1,6 +1,6 @@
 {
   "name": "dvau",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Utility functions and common patterns for Dvajs",
   "main": "dist/index.js",
   "module": "dva-utils.module.js",
@@ -9,6 +9,7 @@
   "scripts": {
     "build": "tsc -p src | tsc -p src --module commonjs --outDir dist && rollup lib/index.js -o dva-utils.umd.js -f umd --name dvaUtils && rollup lib/index.js  -o dva-utils.module.js -f esm",
     "prettier": "prettier --write --print-width 100 --jsx-single-quote --trailing-comma all \"**/*.js\" \"**/*.jsx\" \"**/*.tsx\" \"**/*.ts\"",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
