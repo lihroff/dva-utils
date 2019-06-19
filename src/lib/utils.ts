@@ -25,6 +25,15 @@ export const omit = (props: string[], obj: object) => {
 };
 
 /**
+ *
+ *  Shorthand of Object.prototype.hasOwnProperty also reverse the params.
+ *
+ */
+export function has(prop: string, obj: object): boolean {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+/**
  *  Returns an array which each value is the prop name of Newly defined.
  *
  * @param {Object} tar The target object

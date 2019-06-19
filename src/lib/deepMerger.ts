@@ -1,27 +1,50 @@
-import { isObject, isPrimitive } from './type';
+import { isObject, isPrimitive, isPlainObject } from './type';
+import { has } from './utils';
 
-export function deepMergeWithKey(key?: (o: any) => object) {
-  return function deepMerge(x: object, y: object) {
-    const newObj = {};
+export function deepMergeWithKey(fn: (k: string, l: object, r: object) => any) {
+  // eslint-disable-next-line no-unused-vars
+  return function deepMerge(
+    p1: object,
+    p2: object,
+    p3?: object,
+    p4?: object,
+    p5?: object,
+    p6?: object,
+    p7?: object,
+  ) {
+    const merge = function(l: object, r: object): object {
+      const result = {};
+      let k;
 
-    const merge = function(obj) {
-      for (var prop in obj) {
-        if (!obj.hasOwnProperty(prop)) return;
-
-        if (isPrimitive(newObj[prop]) && isPrimitive(obj[prop])) {
-          newObj[prop] = obj[prop];
-        } else if (isObject(newObj[prop]) && isObject(obj[prop])) {
-          newObj[prop] = deepMerge(newObj[prop], obj[prop]);
-        } else {
-          newObj[prop] = key ? key(obj[prop]) : obj[prop];
+      for (k in l) {
+        if (has(k, l)) {
+          if (!has(k, r)) {
+            result[k] = l[k];
+          } else if (isPrimitive(l[k])) {
+            result[k] = r[k];
+          } else if (isObject(r[k]) && isObject(l[k])) {
+            if (isPlainObject(r[k]) && isPlainObject(l[k])) {
+              result[k] = deepMerge(l[k], r[k]);
+            } else {
+              result[k] = r[k];
+            }
+          } else {
+            result[k] = fn(k, l[k], r[k]);
+          }
         }
       }
+
+      for (k in r) {
+        if (has(k, r) && !has(k, result)) {
+          result[k] = r[k];
+        }
+      }
+
+      return result;
     };
 
-    for (const i in arguments) {
-      merge(arguments[i]);
-    }
+    const [init, ...rest] = arguments;
 
-    return newObj;
+    return rest.reduce((i, j) => merge(i, j), { ...init });
   };
 }

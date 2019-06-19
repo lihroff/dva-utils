@@ -11,7 +11,7 @@ import { omit } from './lib/utils';
  */
 export function deepMergeState(state: object, partials: object) {
   const that = this;
-  const deepMerge = deepMergeWithKey();
+  const deepMerge = deepMergeWithKey((k, l, r) => r);
   const argus = [];
   for (const i in arguments) {
     // redux-saga specifc

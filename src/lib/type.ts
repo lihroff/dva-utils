@@ -15,6 +15,15 @@ export function isObject(x: any): boolean {
   return Object.prototype.toString.call(x) === '[object Object]';
 }
 
+export function isPlainObject(x: any): boolean {
+  if (typeof x !== 'object' || x == null) return false;
+
+  const dummyPlainObject = {};
+  const proto = Object.getPrototypeOf(dummyPlainObject);
+
+  return Object.getPrototypeOf(x) === proto;
+}
+
 export function isArray(x: any): boolean {
   try {
     return Array.isArray(x);
