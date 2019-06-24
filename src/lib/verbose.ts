@@ -13,16 +13,16 @@
 
 var isprod = process.env.NODE_ENV === 'production';
 
-enum logLevel {
-  'log',
-  'error',
-  'warning',
+export enum LogLevel {
+  Log = 'log',
+  Error = 'error',
+  Warn = 'warn',
 }
 
 interface VerboseOption {
   format: string;
-  prefix: string;
-  level: logLevel;
+  prefix?: string;
+  level?: LogLevel | string;
 }
 
 var verbose = function(condition: any, config: string | VerboseOption, a?, b?, c?, d?, e?, f?, g?) {
