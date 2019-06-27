@@ -22,6 +22,6 @@
  * }
  *
  */
-export function createState(initState: object): () => object {
+export function createState<T>(initState: T): () => T {
   return () => initState;
 }

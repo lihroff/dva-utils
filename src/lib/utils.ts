@@ -1,3 +1,8 @@
+export type PowerPartial<T> = {
+  // 如果是 object，则递归类型
+  [U in keyof T]?: T[U] extends object ? PowerPartial<T[U]> : T[U]
+};
+
 /**
  *  Returns a partial copy of an object omitting the keys specified.
  *

@@ -24,7 +24,7 @@ export function isPlainObject(x: any): boolean {
   return Object.getPrototypeOf(x) === proto;
 }
 
-export function isArray(x: any): boolean {
+export function isArray(x: any): x is Array<any> {
   try {
     return Array.isArray(x);
   } catch {
@@ -32,7 +32,7 @@ export function isArray(x: any): boolean {
   }
 }
 
-export function isFunction(x: any): boolean {
+export function isFunction(x: any): x is Function {
   var type = Object.prototype.toString.call(x);
   return (
     type === '[object Function]' ||

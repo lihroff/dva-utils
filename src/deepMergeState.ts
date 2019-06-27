@@ -9,7 +9,7 @@ import { omit } from './lib/utils';
  * @return {object} new state
  *
  */
-export function deepMergeState(state: object, partials: object) {
+export function deepMergeState<T>(state: object, partials: object) {
   const that = this;
   const deepMerge = deepMergeWithKey((k, l, r) => r);
   const argus = [];

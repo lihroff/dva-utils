@@ -1,5 +1,5 @@
 import verbose from './lib/verbose';
-import { omit, getNewInProps } from './lib/utils';
+import { omit, getNewInProps, PowerPartial } from './lib/utils';
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -18,7 +18,7 @@ const NODE_ENV = process.env.NODE_ENV;
  * });
  *
  */
-export function mergeState(state: object, partials: object) {
+export function mergeState<T>(state: T, partials: PowerPartial<T>) {
   const [org, ...rest] = arguments;
   let newState = { ...org };
   for (let i in rest) {
