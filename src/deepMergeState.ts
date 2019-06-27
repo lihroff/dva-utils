@@ -14,7 +14,7 @@ export function deepMergeState(state: object, partials: object) {
   const deepMerge = deepMergeWithKey((k, l, r) => r);
   const argus = [];
   for (const i in arguments) {
-    // redux-saga specifc
+    // redux specifc
     argus.push(i ? omit(['type'], arguments[i]) : arguments[i]);
   }
 

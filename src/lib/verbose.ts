@@ -25,7 +25,17 @@ interface VerboseOption {
   level?: LogLevel | string;
 }
 
-var verbose = function(condition: any, config: string | VerboseOption, a?, b?, c?, d?, e?, f?, g?) {
+var verbose = function(
+  condition: boolean,
+  config: string | VerboseOption,
+  a?,
+  b?,
+  c?,
+  d?,
+  e?,
+  f?,
+  g?,
+) {
   let format, level, prefix;
 
   if (isprod) return;

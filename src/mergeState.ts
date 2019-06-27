@@ -22,11 +22,11 @@ export function mergeState(state: object, partials: object) {
   const [org, ...rest] = arguments;
   let newState = { ...org };
   for (let i in rest) {
-    // redux-saga specifc
+    // redux specifc
     const cur = omit(['type'], rest[i]);
     if (NODE_ENV !== 'production') {
       const diff = getNewInProps(newState, cur);
-      verbose(diff.length, '调用 mergeState() 时存在未定义属性:[ %s ]请确认!', diff);
+      verbose(diff.length > 0, '调用 mergeState() 时存在未定义属性:[ %s ]请确认!', diff);
     }
     newState = {
       ...newState,
